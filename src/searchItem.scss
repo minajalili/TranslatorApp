@@ -1,0 +1,52 @@
+@mixin  flexCenter($direction) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: $direction;
+}
+@mixin textStyles {
+  color: antiquewhite;
+  font: initial;
+  
+}
+.SearchItem{
+ @include flexCenter(column);
+ width: 60vw;
+ border-radius: 3px;
+ background-color:  rgba(255, 243, 243, 0.22);
+ -webkit-box-shadow: 10px 10px 14px 1px rgba(00,00,00,0.2);
+ box-shadow: 10px 10px 14px 1px rgba(00,00,00,0.2);
+
+
+  #searchArea{
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .form-sections{
+    margin: 1rem;
+    label{
+      @include textStyles();
+      margin: 5px;
+    }
+   
+  }
+  .mainResult{
+    @include textStyles();
+    font-size: 3rem;
+    font-weight: bold;
+    background: #80808063;
+    border-radius: 3px;
+    padding: 5px 15px;
+  }
+  .example_sentence{
+    @include flexCenter(column);
+    @include textStyles();
+  }
+  audio{
+    background-color: rgba(4, 4, 4, 0.37);
+    border-radius: 3px;
+  }
+}
