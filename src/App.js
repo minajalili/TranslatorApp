@@ -1,5 +1,5 @@
 import './App.scss';
-import SearchItem from './components/searchItems/SearchItem'
+import SearchItem from './components/SearchItem'
 
 function App() {
   return (

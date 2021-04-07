@@ -1,66 +1,9 @@
-import React, {useState , useEffect} from 'react';
-import '../../App.scss';
-import'../../searchItem.scss'
+import React from 'react';
 
+//style
+import '../form.scss';
 
-
-function SearchItem (){
-    const [word, setWord]=useState([]);
-    const [search , setSearch] = useState('water');
-    const [query, setQuery] =useState('water');
-    const [src, setSrc] =useState('en');
-    const [dst, setDst] =useState('de');
-    const [example , setExample]=useState('');
-    const[sounds,setSounds]=useState();
-
-
-    useEffect(()=>{
-        fetchResult();
-    },[query])
-
-
-
-    const fetchResult = async()=>{
-        try {
-            const response = await fetch(
-                `https://linguee-api.herokuapp.com/api?q=${query}&src=${src}&dst=${dst}`
-                );
-            const data = await response.json();
-            console.log(data);
-            dataExist(data);
-        }catch(e){
-            console.log(e);
-            throw e
-        }
-
-    }
-    //analysis data 
-    const dataExist =(data)=>{
-        if(data["exact_matches"]){
-            if(data["exact_matches"][0] || data["exact_matches"]!==null){
-                setWord(data["exact_matches"][0]["translations"][0]["text"])
-                setExample(
-                    data["exact_matches"][0]["translations"][0]["examples"][0]!==undefined?
-                        data["exact_matches"][0]["translations"][0]["examples"][0]:''
-                    );
-                setSounds(
-                   data["exact_matches"][0]["translations"][0]["audio_link"][0]!==undefined? 
-                        data["exact_matches"][0]["translations"][0]["audio_link"][0]["url_part"]:''
-                    )
-
-            }else{
-                setWord('no result!');
-                setExample('');
-                setSounds('');
-            }
-        }else{
-                setWord('no result!');
-                setExample('');
-                setSounds('');
-        }
-
-    }
-    
+const Form =({search,setSearch,setQuery,setSrc,setDst})=>{
 
     //get data from user
     const searchValue =(e)=>{
@@ -78,20 +21,19 @@ function SearchItem (){
     }
     const getDst =(e)=>{
         setDst(e.target.value);
-    }    
-    return (
-        <div className="SearchItem" >
-            
-            <form id="searchArea" onSubmit={getQuery} >
+    }   
+
+    return(
+        <form id="searchArea" onSubmit={getQuery} >
                 <div className="form-sections" >
                     <input type="text" value={search} onChange={searchValue}/>
                 </div>
                 <div>
                     <div className="form-sections">
                         <label >
-                            select source language
+                           click to select source
                         </label>
-                        <select name="src" id="" onChange={getSrc}>
+                        <select name="src" id="" onChange={getSrc}>  
                         <option value="en">English</option>
                         <option value="de">German</option>
                         <option value="es">Spanish</option>
@@ -121,7 +63,7 @@ function SearchItem (){
                     </div>
                     <div className="form-sections">
                         <label >
-                            select target language
+                            click to select target
                         </label>
                         <select name="dst" id="" onChange={getDst} >
                         <option value="de">German</option>
@@ -156,20 +98,7 @@ function SearchItem (){
                     <button>Find</button>
                 </div>
             </form>
-            <h1 className="mainResult">{word}</h1>
-            {sounds!==''?
-                <audio controls src={`https://www.linguee.de/mp3/${sounds}.mp3`}></audio>:''
-            }
-            {example !== ''?
-            <div className="example_sentence">
-                <h3>example sentense</h3>
-                <p>source : {example.source}</p>
-                <p>target : {example.target}</p>
-            </div>:''
-            
-            }
-        </div>
     )
 }
 
-export default SearchItem;
+export default Form;

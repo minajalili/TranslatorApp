@@ -9,7 +9,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 100vh;
+  height: auto;
   background-image: 
   radial-gradient(circle, 
   #0c2850, #003054, #003855, #003f54, 
