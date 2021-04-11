@@ -76,6 +76,7 @@ const SearchItem =() => {
         
     return (
         <div className="SearchItem" >
+           
             <Form search={search} setSearch={setSearch} setQuery={setQuery} setSrc={setSrc} setDst={setDst} />
             <Result word={word} sounds={sounds} example={example}  />
         </div>

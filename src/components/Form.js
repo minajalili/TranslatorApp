@@ -25,6 +25,9 @@ const Form =({search,setSearch,setQuery,setSrc,setDst})=>{
 
     return(
         <form id="searchArea" onSubmit={getQuery} >
+            <div className="form-welcome">
+                <h1>welcome!</h1>
+            </div>
                 <div className="form-sections" >
                     <input type="text" value={search} onChange={searchValue}/>
                 </div>

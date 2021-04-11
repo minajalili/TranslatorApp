@@ -5,7 +5,7 @@
   flex-direction: $direction;
 }
 @mixin textStyles {
-  color: antiquewhite;
+  color: #004553;
   font: initial;
   
 }
@@ -13,14 +13,17 @@
   $breakpoint-desktop: 40rem;
   @media (min-width: $breakpoint-desktop) {
        @include flexCenter(row);
+       select{
+         width: 15vw;
+       }
   }
- @include flexCenter(column);
- width: 60vw;
- border-radius: 3px;
- background-color:  rgba(255, 243, 243, 0.22);
- -webkit-box-shadow: 10px 10px 14px 1px rgba(00,00,00,0.2);
- box-shadow: 10px 10px 14px 1px rgba(00,00,00,0.2);
- padding: 2rem;
+  @include flexCenter(column);
+  width: 60vw;
+  border-radius: 5px;
+  background-color:  rgb(255, 255, 255);
+  -webkit-box-shadow: 10px 10px 14px 1px rgba(00,00,00,0.2);
+  box-shadow: 15px 16px 15px 1px rgba(6, 6, 6, 0.85);
+  padding: 2rem;
 
 
   #searchArea{
@@ -31,6 +34,11 @@
     justify-content: space-around;
     width: 100vw;
   }
+  .form-welcome{
+    h1{
+      color:#2e5580;
+    }
+  }
   .form-sections{
     margin: 1rem;
     margin: 1rem;
@@ -40,28 +48,30 @@
     justify-content: space-around;
     flex-direction: column;
 
+   
+
     input{
       @include textStyles();
-      color: rgb(34, 33, 33);
-      border-radius: 3px;
+      color: rgba(43, 37, 37, 0.93);
+      border-radius: 10px;
       border: none;
       min-width: 10vw;
-      min-height: 5vh;
+      min-height: 7vh;
       width: 20vw;
-      box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+      background: #bdbdbd6e;
+      box-shadow: 3px 4px 13px rgba(0, 0, 0, 0.34);
       text-align: center;
     }
     
     select{
       @include textStyles();
-      color: rgb(17, 17, 17);
-      background: #cacaca75;
-      border-radius: 3px;
+      color: #4a4949;
+      background: #6c6c6c1c;
+      border-radius: 15px;
       border: none;
       min-width: 10vw;
       min-height: 5vh;
-      width: 20vw;
-      box-shadow: 1px 4px 6px rgba(255, 251, 251, 0.58);
+      box-shadow: 3px 4px 13px rgba(0, 0, 0, 0.34);
       text-align: center;
       padding: 5px 15px;
       -webkit-appearance: none;     
@@ -69,17 +79,21 @@
 
     label{
       @include textStyles();
-      margin: 1rem;
+      margin: 1.2rem 0;
     }
     button{
       @include textStyles();
-      background: #f4f4f4e0;
+      background: 
+      radial-gradient(circle, 
+      #003054, #003855, #003f54, 
+      #004553, #03424f, #06404b, #093d47, 
+      #08313e);
       padding: 5px;
-      color: #201f1f;
-      border-radius: 3px;
+      color: #e4e0e0;
+      border-radius: 20px;
       border: none;
       min-width: 10vw;
-      min-height: 5vh;
+      min-height: 7vh;
       width: 25vw;
       box-shadow: 1px 4px 6px rgba(255, 251, 251, 0.58);
       text-align: center;
@@ -91,14 +105,21 @@
     width: 50vw;
 
     .mainResult{
+      @media (min-width: $breakpoint-desktop) {
+        padding: 20px;
+        font-size: 2.5rem;
+       }
       @include textStyles();
-      font-size: 2.5rem;
+      color: #2e5580;
+      font: initial;
+      font-weight: initial;
+      font-size: initial;
+      font-size: 1.5rem;
       font-weight: bold;
-      background: #80808063;
-      border-radius: 3px;
-      padding: 5px 15px;
-      
-      text-align: center
+      background: #aaa7a763;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
     }
     .example_sentence{
       @include flexCenter(column);
@@ -107,9 +128,9 @@
       padding: 0 10px;
       text-align: center;
       border-radius: 3px;
-      box-shadow:0px 1px 3px rgba(0, 0, 0, 0.1);
-      color: #ececee;
-      background-color: #f4f4f46e;
+      box-shadow: 3px 4px 13px rgba(0, 0, 0, 0.34);
+      color: #004553;
+      background-color: #e7e2e28c;
     }
     
     #voiceResult{
